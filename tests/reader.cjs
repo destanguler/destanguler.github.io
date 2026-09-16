@@ -52,10 +52,10 @@ const server = http.createServer((request, response) => {
         await expect(page.locator('.footer a[href="tel:+817090236141"]')).toBeVisible();
         if (file === 'videos.html') {
           await expect(page.locator('.video-card')).toHaveCount(10);
-          await expect(page.locator('.video-card .role')).toHaveText(Array(10).fill('Content Creator & Assistant Producer'));
+          await expect(page.locator('.video-card .role')).toHaveText(Array(10).fill('Content Writer & Assistant Producer'));
         }
         if (file === 'index.html') {
-          assert.equal(await page.locator('a.work-card').count(), 13);
+          assert.equal(await page.locator('a.work-card').count(), 4);
           assert.equal(await page.locator('.work-card[data-pdf]').count(), 3);
           await expect(page.locator('.work-card[data-video]').first()).toHaveAttribute('data-video', 'XrVW9X_RzxI');
         }

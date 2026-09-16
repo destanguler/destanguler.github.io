@@ -94,7 +94,7 @@ a.work-card:hover .work-title { text-decoration:underline; text-decoration-thick
 .eyebrow { font-size:24px; margin-bottom:25px; }
 .page-hero h1 { font-size:clamp(40px,6vw,80px); line-height:1.1; letter-spacing:-2px; margin-bottom:24px; }
 .lead { font-size:19px; line-height:1.6; }
-.filters { display:flex; gap:12px; margin-bottom:30px; }
+.filters { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:30px; }
 .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; }
 .card { border:1px solid var(--line); padding:28px; min-height:250px; display:flex; flex-direction:column; align-items:flex-start; gap:20px; }
 .card:hover { background:#d8d8d4; }

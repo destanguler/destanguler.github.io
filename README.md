@@ -8,11 +8,11 @@ Edit `content.json`. Put photos and PDFs in `files/`, using lowercase English fi
 
 - **About:** edit `person`. Set `photo` and `resumePdf` to file paths, or leave them empty to hide them. Each `biography` entry is a paragraph.
 - **Experience:** add `{"period":"2024–2026","title":"Role / organization","description":"A short description"}` to `person.experience`.
-- **Writing:** copy an entry in `writing`. Use `Essay` or `Script` for `type`.
+- **Writing:** copy an entry in `writing`. Use `Essay`, `Script`, or `Short Story` for `type`.
 - **Poetry:** add `{"title":"Poem title","description":"A short description","pdf":"files/poem.pdf"}` to `poetry`.
 - **Videos:** copy an entry in `videos`. Set the YouTube `url`, your `role` (for example, `Consultant`), and your `contribution`.
 - **Links:** add `{"title":"Instagram","url":"https://..."}` to `person.links`.
-- **Featured Work:** an empty `featured` list automatically displays the existing writing and videos. Set a custom selection with entries such as `{"type":"Screenwriting","title":"Project title","pdf":"files/project.pdf"}` or use `url` for a project/video link. PDF and YouTube cards open the built-in readers. The homepage archive still links to writing, poetry and video pages.
+- **Featured Work:** `featured` explicitly selects archive entries by `pdf` or `url`, for example `{"pdf":"files/digital-killer-en.pdf"}`. Titles and roles are inherited from the archive. An empty list shows no featured cards. All projects remain in their archive pages.
 - **Contact:** edit `person.email` and `person.phone`; these appear on `contact.html` and in every footer. `person.aboutHeadline` is the large About statement. The portrait shows initials until `person.photo` is supplied.
 
 Separate entries with commas. List order determines display order. Empty lists can remain `[]`. Keep PDFs in this repository.

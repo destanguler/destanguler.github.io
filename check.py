@@ -38,7 +38,7 @@ for key in ['writing', 'poetry']:
     for item in data[key]:
         fields(item, ['title', 'pdf'])
         if key == 'writing':
-            assert item.get('type') in ('Essay', 'Script'), 'Type must be Essay or Script'
+            assert item.get('type') in ('Essay', 'Script', 'Short Story'), 'Type must be Essay, Script or Short Story'
         local_file(item['pdf'], {'.pdf'})
         assert (ROOT / item['pdf']).read_bytes().startswith(b'%PDF-'), 'Invalid PDF'
 for item in data['videos']:
@@ -51,3 +51,6 @@ for name in ['index.html', 'about.html', 'contact.html', 'writing.html', 'poetry
         assert (ROOT / urlparse(asset).path).is_file(), f'Missing asset: {asset}'
 assert (ROOT / 'assets/pencils.jpg').is_file()
 print('OK: content, contact details, files and 6 pages validated.')
+
+for item in data['featured']:
+    assert any((item.get('pdf') and item['pdf'] == work.get('pdf')) or (item.get('url') and item['url'] == work.get('url')) for work in data['writing'] + data['videos']), 'Unknown featured work'

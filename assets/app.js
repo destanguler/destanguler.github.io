@@ -84,12 +84,16 @@ async function start() {
   document.querySelector('.footer-contact').innerHTML = contactDetails;
 
   if (page === 'home') {
-    const featured = content.featured.length ? content.featured : [...content.writing, ...content.videos];
+    const allWorks = [...content.writing, ...content.videos];
+    const featured = content.featured.map(selection => ({
+      ...allWorks.find(work => selection.pdf ? work.pdf === selection.pdf : work.url === selection.url),
+      ...selection
+    }));
     const workCards = featured.map((work, i) => {
       const url = safeUrl(work.pdf || work.url);
       const video = !work.pdf && youtubeId(work.url);
       const label = work.type || (video ? 'Video' : 'Project');
-      const action = work.pdf ? 'Read script ↗' : video ? 'Watch video ▶' : 'View work ↗';
+      const action = work.pdf ? (work.type === 'Script' ? 'Read script ↗' : 'Read story ↗') : video ? 'Watch video ▶' : 'View work ↗';
       const tag = url ? 'a' : 'article';
       return `<${tag} class="work-card work-${i % 4}${video ? ' work-video' : ''}"${url ? ` href="${escape(url)}" data-title="${escape(work.title)}"${work.pdf ? ' data-pdf' : video ? ` data-video="${video}" data-role="${escape(work.role)}"` : ''}` : ''}>
         <div class="work-art">${video ? `<img class="work-cover" src="https://i.ytimg.com/vi/${video}/hqdefault.jpg" alt="" loading="lazy">` : ''}<span class="work-number">${String(i + 1).padStart(2, '0')} / ${escape(label)}</span>
@@ -118,7 +122,7 @@ async function start() {
     const poetry = page === 'poetry';
     const items = (poetry ? content.poetry : content.writing).filter(item => safeUrl(item.pdf));
     main.innerHTML = `<section class="library shell">${poetry ? pageHero('Poetry', 'Poetry.', 'A collection of poems.') : pageHero('Writing & scripts', 'Writing & scripts.', 'Writing and scripts. Open a title and turn the pages at your own pace.')}
-      ${!poetry && items.length ? '<div class="filters" role="group" aria-label="Filter by category"><button class="filter" data-filter="All" aria-pressed="true">All</button><button class="filter" data-filter="Essay" aria-pressed="false">Essays</button><button class="filter" data-filter="Script" aria-pressed="false">Scripts</button></div>' : ''}
+      ${!poetry && items.length ? '<div class="filters" role="group" aria-label="Filter by category"><button class="filter" data-filter="All" aria-pressed="true">All</button><button class="filter" data-filter="Essay" aria-pressed="false">Essays</button><button class="filter" data-filter="Script" aria-pressed="false">Scripts</button><button class="filter" data-filter="Short Story" aria-pressed="false">Short stories</button></div>' : ''}
       <div id="works">${items.length ? `<div class="grid">${items.map(pdfCard).join('')}</div>` : empty('New stories are on their way.', 'New work will appear here as it is added.')}</div></section>`;
     document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
       document.querySelectorAll('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
@@ -127,7 +131,7 @@ async function start() {
     }));
   } else if (page === 'video') {
     const videos = content.videos.filter(item => youtubeId(item.url));
-    main.innerHTML = `<section class="library shell">${pageHero('On screen', 'Video work.', 'Content Creator &amp; Assistant Producer for Red Bull Gamerszon. This role applies to every video below.')}${safeUrl(content.videoChannel?.url) ? `<p><a href="${escape(safeUrl(content.videoChannel.url))}" target="_blank" rel="noopener">Visit ${escape(content.videoChannel.title)} on YouTube ↗</a></p><br>` : ''}${videos.length ? `<div class="grid">${videos.map(videoCard).join('')}</div>` : empty('The curtain opens soon.', 'New projects will appear here.')}</section>`;
+    main.innerHTML = `<section class="library shell">${pageHero('On screen', 'Video work.', 'Content Writer &amp; Assistant Producer for Red Bull Gamerszon. This role applies to every video below.')}${safeUrl(content.videoChannel?.url) ? `<p><a href="${escape(safeUrl(content.videoChannel.url))}" target="_blank" rel="noopener">Visit ${escape(content.videoChannel.title)} on YouTube ↗</a></p><br>` : ''}${videos.length ? `<div class="grid">${videos.map(videoCard).join('')}</div>` : empty('The curtain opens soon.', 'New projects will appear here.')}</section>`;
   }
   // Content is rendered asynchronously, so restore direct links to the work section.
   if (location.hash === '#featured') document.querySelector('#featured')?.scrollIntoView();

@@ -6,10 +6,10 @@
     "intro": "Destan Guler — Narrative Consultant & Writer based in Tokyo. Brand stories, screenplays, and creative collaborations.",
     "aboutHeadline": "I write stories and help bring them to the screen.",
     "biography": [
-      "My background is in digital marketing, content production, and narrative writing. I've worked on brand campaigns and video productions, including Red Bull Gamerszon as a Content Creator & Assistant Producer.",
+      "My background is in digital marketing, content production, and narrative writing. I've worked on brand campaigns and video productions, including Red Bull Gamerszon as a Content Writer & Assistant Producer.",
       "I started writing poems as a kid and screenplays at university. That interest grew into work on production sets. Games, films, books, and series still shape the way I think about stories."
     ],
-    "photo": "",
+    "photo": "files/destan-guler.jpg",
     "photoAlt": "Portrait of Destan Guler",
     "resumePdf": "",
     "experience": [],
@@ -17,7 +17,20 @@
     "phone": "+817090236141",
     "links": []
   },
-  "featured": [],
+  "featured": [
+    {
+      "pdf": "files/digital-killer-en.pdf"
+    },
+    {
+      "pdf": "files/the-shelter.pdf"
+    },
+    {
+      "pdf": "files/rains-of-prophecy.pdf"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=XrVW9X_RzxI"
+    }
+  ],
   "writing": [
     {
       "title": "Digital Killer",
@@ -39,6 +52,13 @@
       "year": "",
       "description": "Afraid of death, Aziz is caught between a priest and a goat promising eternal life. An English synopsis and treatment.",
       "pdf": "files/church.pdf"
+    },
+    {
+      "title": "Rains of Prophecy",
+      "type": "Short Story",
+      "year": "",
+      "description": "As a violent storm unfolds, Teo discovers a prophecy that draws him into the world of the Greek gods. A short story in English.",
+      "pdf": "files/rains-of-prophecy.pdf"
     }
   ],
   "poetry": [],
@@ -48,80 +68,80 @@
       "url": "https://www.youtube.com/watch?v=XrVW9X_RzxI",
       "channel": "Red Bull Gamerszon",
       "year": "",
-      "role": "Content Creator & Assistant Producer",
-      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+      "role": "Content Writer & Assistant Producer",
+      "contribution": "Content writing and assistant production for Red Bull Gamerszon."
     },
     {
       "title": "Red Bull Boss Fight: Enis Kirazoglu vs. wtcN & Eray Ozkenar",
       "url": "https://www.youtube.com/watch?v=dvR4jyCCYl8",
       "channel": "Red Bull Gamerszon",
       "year": "",
-      "role": "Content Creator & Assistant Producer",
-      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+      "role": "Content Writer & Assistant Producer",
+      "contribution": "Content writing and assistant production for Red Bull Gamerszon."
     },
     {
       "title": "Good Game Show: Ferit & Eray vs. Efe Uygac & Emre Yildiz",
       "url": "https://www.youtube.com/watch?v=pXJBe3orjz4",
       "channel": "Red Bull Gamerszon",
       "year": "",
-      "role": "Content Creator & Assistant Producer",
-      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+      "role": "Content Writer & Assistant Producer",
+      "contribution": "Content writing and assistant production for Red Bull Gamerszon."
     },
     {
       "title": "Good Game Show: Husam & Kaanflix vs. Saniye & Adal",
       "url": "https://www.youtube.com/watch?v=gC9uceuf17w",
       "channel": "Red Bull Gamerszon",
       "year": "",
-      "role": "Content Creator & Assistant Producer",
-      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+      "role": "Content Writer & Assistant Producer",
+      "contribution": "Content writing and assistant production for Red Bull Gamerszon."
     },
     {
       "title": "Good Game Show: Orhun Kayaalp & Tunca Arslan vs. Dost Kayaoglu & Emin Citak",
       "url": "https://www.youtube.com/watch?v=IaF2hi7zZ-k",
       "channel": "Red Bull Gamerszon",
       "year": "",
-      "role": "Content Creator & Assistant Producer",
-      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+      "role": "Content Writer & Assistant Producer",
+      "contribution": "Content writing and assistant production for Red Bull Gamerszon."
     },
     {
       "title": "Football Special: Emre Ozcan & Erman Yasar vs. Kaan Kural & Can Onduygu",
       "url": "https://www.youtube.com/watch?v=vTCxfHDxCYQ",
       "channel": "Red Bull Gamerszon",
       "year": "",
-      "role": "Content Creator & Assistant Producer",
-      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+      "role": "Content Writer & Assistant Producer",
+      "contribution": "Content writing and assistant production for Red Bull Gamerszon."
     },
     {
       "title": "Good Game Show — LoL Special: wtcN & Lynx Cerezz vs. Naru & Closer",
       "url": "https://www.youtube.com/watch?v=mY5ZV_8xz9k",
       "channel": "Red Bull Gamerszon",
       "year": "",
-      "role": "Content Creator & Assistant Producer",
-      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+      "role": "Content Writer & Assistant Producer",
+      "contribution": "Content writing and assistant production for Red Bull Gamerszon."
     },
     {
       "title": "Good Game Show: Batu Bozkan & Faruk Akinci vs. Sinan Akkol & AT0M",
       "url": "https://www.youtube.com/watch?v=0ImZGeLtFtg",
       "channel": "Red Bull Gamerszon",
       "year": "",
-      "role": "Content Creator & Assistant Producer",
-      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+      "role": "Content Writer & Assistant Producer",
+      "contribution": "Content writing and assistant production for Red Bull Gamerszon."
     },
     {
       "title": "Good Game Show: Noluyo Ya vs. Eray Can Ozkenar & Efe Uygac",
       "url": "https://www.youtube.com/watch?v=AZfmyvO60WI",
       "channel": "Red Bull Gamerszon",
       "year": "",
-      "role": "Content Creator & Assistant Producer",
-      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+      "role": "Content Writer & Assistant Producer",
+      "contribution": "Content writing and assistant production for Red Bull Gamerszon."
     },
     {
       "title": "Good Game Show: Soguk Savas & LateNighter",
       "url": "https://www.youtube.com/watch?v=rfnZUPwrGNo",
       "channel": "Red Bull Gamerszon",
       "year": "",
-      "role": "Content Creator & Assistant Producer",
-      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+      "role": "Content Writer & Assistant Producer",
+      "contribution": "Content writing and assistant production for Red Bull Gamerszon."
     }
   ],
   "videoChannel": {
