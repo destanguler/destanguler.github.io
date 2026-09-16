@@ -50,10 +50,14 @@ const server = http.createServer((request, response) => {
         await expect(page.locator('.nav a')).toHaveText(['Work', 'About', 'Contact']);
         await expect(page.locator('.footer a[href="mailto:hello.destan@gmail.com"]')).toBeVisible();
         await expect(page.locator('.footer a[href="tel:+817090236141"]')).toBeVisible();
+        if (file === 'videos.html') {
+          await expect(page.locator('.video-card')).toHaveCount(10);
+          await expect(page.locator('.video-card .role')).toHaveText(Array(10).fill('Content Creator & Assistant Producer'));
+        }
         if (file === 'index.html') {
-          assert.equal(await page.locator('a.work-card').count(), 3);
-          assert.equal(await page.locator('.work-card[data-pdf]').count(), 2);
-          await expect(page.locator('.work-card[data-video]')).toHaveAttribute('data-video', 'XrVW9X_RzxI');
+          assert.equal(await page.locator('a.work-card').count(), 13);
+          assert.equal(await page.locator('.work-card[data-pdf]').count(), 3);
+          await expect(page.locator('.work-card[data-video]').first()).toHaveAttribute('data-video', 'XrVW9X_RzxI');
         }
       }
     }
@@ -130,7 +134,7 @@ const server = http.createServer((request, response) => {
     await expect(page.locator('#page-count')).toHaveText('Page 1 of 3');
     await page.locator('#reader-close').click();
     await page.goto(`${origin}/videos.html`);
-    await page.locator('[data-video]').click();
+    await page.locator('[data-video]').first().click();
     await expect(page.locator('#video-dialog iframe')).toHaveAttribute('src', /youtube-nocookie/);
     await page.locator('#video-dialog button').click();
     await expect(page.locator('#video-dialog iframe')).toHaveCount(0);

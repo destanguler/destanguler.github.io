@@ -2,12 +2,12 @@
   "person": {
     "name": "Destan Guler",
     "monogram": "dg.",
-    "headline": "Hello. I'm Destan Guler, a narrative consultant & writer bringing stories to life — on the page, on screen, and beyond.",
+    "headline": "I'm Destan Guler, a narrative consultant and writer based in Tokyo.",
     "intro": "Destan Guler — Narrative Consultant & Writer based in Tokyo. Brand stories, screenplays, and creative collaborations.",
-    "aboutHeadline": "I'm a storyteller, a content creator, and someone who genuinely believes the right words can change everything.",
+    "aboutHeadline": "I write stories and help bring them to the screen.",
     "biography": [
-      "Based in Tokyo, I'm a creative professional with a background in digital marketing, content production, and narrative writing. I've worked with global brands, managed campaigns that drove real results, and contributed to productions that brought stories to life on screen. Whether it's a brand narrative, a short film, or a character's dialogue — I believe every great piece of communication starts with a compelling story.",
-      "Deep down, I've always been a storyteller. It started with poems as a kid, grew into screenplays at university, and found its way onto production sets. Games, films, books, series — if there's a narrative, I'm invested. That obsession is what drives everything I do."
+      "My background is in digital marketing, content production, and narrative writing. I've worked on brand campaigns and video productions, including Red Bull Gamerszon as a Content Creator & Assistant Producer.",
+      "I started writing poems as a kid and screenplays at university. That interest grew into work on production sets. Games, films, books, and series still shape the way I think about stories."
     ],
     "photo": "",
     "photoAlt": "Portrait of Destan Guler",
@@ -32,17 +32,100 @@
       "year": "",
       "description": "A mother and her infant wait for rescue in a wartime shelter. An English synopsis and treatment.",
       "pdf": "files/the-shelter.pdf"
+    },
+    {
+      "title": "Church",
+      "type": "Script",
+      "year": "",
+      "description": "Afraid of death, Aziz is caught between a priest and a goat promising eternal life. An English synopsis and treatment.",
+      "pdf": "files/church.pdf"
     }
   ],
   "poetry": [],
   "videos": [
     {
-      "title": "Red Bull Boss Fight: Enis Kirazoglu strikes back",
+      "title": "Red Bull Boss Fight: Enis Kirazoglu Strikes Back",
       "url": "https://www.youtube.com/watch?v=XrVW9X_RzxI",
       "channel": "Red Bull Gamerszon",
       "year": "",
-      "role": "Sample project",
-      "contribution": "Details about my role and contribution will be added soon."
+      "role": "Content Creator & Assistant Producer",
+      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+    },
+    {
+      "title": "Red Bull Boss Fight: Enis Kirazoglu vs. wtcN & Eray Ozkenar",
+      "url": "https://www.youtube.com/watch?v=dvR4jyCCYl8",
+      "channel": "Red Bull Gamerszon",
+      "year": "",
+      "role": "Content Creator & Assistant Producer",
+      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+    },
+    {
+      "title": "Good Game Show: Ferit & Eray vs. Efe Uygac & Emre Yildiz",
+      "url": "https://www.youtube.com/watch?v=pXJBe3orjz4",
+      "channel": "Red Bull Gamerszon",
+      "year": "",
+      "role": "Content Creator & Assistant Producer",
+      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+    },
+    {
+      "title": "Good Game Show: Husam & Kaanflix vs. Saniye & Adal",
+      "url": "https://www.youtube.com/watch?v=gC9uceuf17w",
+      "channel": "Red Bull Gamerszon",
+      "year": "",
+      "role": "Content Creator & Assistant Producer",
+      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+    },
+    {
+      "title": "Good Game Show: Orhun Kayaalp & Tunca Arslan vs. Dost Kayaoglu & Emin Citak",
+      "url": "https://www.youtube.com/watch?v=IaF2hi7zZ-k",
+      "channel": "Red Bull Gamerszon",
+      "year": "",
+      "role": "Content Creator & Assistant Producer",
+      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+    },
+    {
+      "title": "Football Special: Emre Ozcan & Erman Yasar vs. Kaan Kural & Can Onduygu",
+      "url": "https://www.youtube.com/watch?v=vTCxfHDxCYQ",
+      "channel": "Red Bull Gamerszon",
+      "year": "",
+      "role": "Content Creator & Assistant Producer",
+      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+    },
+    {
+      "title": "Good Game Show — LoL Special: wtcN & Lynx Cerezz vs. Naru & Closer",
+      "url": "https://www.youtube.com/watch?v=mY5ZV_8xz9k",
+      "channel": "Red Bull Gamerszon",
+      "year": "",
+      "role": "Content Creator & Assistant Producer",
+      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+    },
+    {
+      "title": "Good Game Show: Batu Bozkan & Faruk Akinci vs. Sinan Akkol & AT0M",
+      "url": "https://www.youtube.com/watch?v=0ImZGeLtFtg",
+      "channel": "Red Bull Gamerszon",
+      "year": "",
+      "role": "Content Creator & Assistant Producer",
+      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+    },
+    {
+      "title": "Good Game Show: Noluyo Ya vs. Eray Can Ozkenar & Efe Uygac",
+      "url": "https://www.youtube.com/watch?v=AZfmyvO60WI",
+      "channel": "Red Bull Gamerszon",
+      "year": "",
+      "role": "Content Creator & Assistant Producer",
+      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
+    },
+    {
+      "title": "Good Game Show: Soguk Savas & LateNighter",
+      "url": "https://www.youtube.com/watch?v=rfnZUPwrGNo",
+      "channel": "Red Bull Gamerszon",
+      "year": "",
+      "role": "Content Creator & Assistant Producer",
+      "contribution": "Content creation and assistant production for Red Bull Gamerszon."
     }
-  ]
+  ],
+  "videoChannel": {
+    "title": "Red Bull Gamerszon",
+    "url": "https://www.youtube.com/@RedBullGamerszon"
+  }
 }

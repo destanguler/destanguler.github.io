@@ -43,7 +43,7 @@ function pdfCard(item) {
 function videoCard(item) {
   const id = youtubeId(item.url);
   if (!id) return '';
-  return `<a class="card video-card" href="https://www.youtube.com/watch?v=${id}" data-video="${id}" data-title="${escape(item.title)}">
+  return `<a class="card video-card" href="https://www.youtube.com/watch?v=${id}" data-video="${id}" data-role="${escape(item.role)}" data-title="${escape(item.title)}">
     <div class="video-cover">
       <img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy">
       <span class="play" aria-hidden="true">▶</span>
@@ -52,7 +52,7 @@ function videoCard(item) {
       <span class="meta">${escape(item.channel)}${item.year ? ` · ${escape(item.year)}` : ''}</span>
       <h3>${escape(item.title)}</h3>
       <span class="role">${escape(item.role)}</span>
-      <p>${escape(item.contribution)}</p>
+
       <span class="arrow">Watch${arrow}</span>
     </div>
   </a>`;
@@ -91,10 +91,10 @@ async function start() {
       const label = work.type || (video ? 'Video' : 'Project');
       const action = work.pdf ? 'Read script ↗' : video ? 'Watch video ▶' : 'View work ↗';
       const tag = url ? 'a' : 'article';
-      return `<${tag} class="work-card work-${i % 4}${video ? ' work-video' : ''}"${url ? ` href="${escape(url)}" data-title="${escape(work.title)}"${work.pdf ? ' data-pdf' : video ? ` data-video="${video}"` : ''}` : ''}>
-        <div class="work-art">${video ? `<img class="work-cover" src="https://i.ytimg.com/vi/${video}/hqdefault.jpg" alt="" loading="lazy">` : ''}<span class="work-number">0${i + 1} / ${escape(label)}</span>
+      return `<${tag} class="work-card work-${i % 4}${video ? ' work-video' : ''}"${url ? ` href="${escape(url)}" data-title="${escape(work.title)}"${work.pdf ? ' data-pdf' : video ? ` data-video="${video}" data-role="${escape(work.role)}"` : ''}` : ''}>
+        <div class="work-art">${video ? `<img class="work-cover" src="https://i.ytimg.com/vi/${video}/hqdefault.jpg" alt="" loading="lazy">` : ''}<span class="work-number">${String(i + 1).padStart(2, '0')} / ${escape(label)}</span>
           <span class="work-title">${escape(work.title)}</span><span class="work-status">${url ? action : 'Coming soon'}</span></div>
-        <div class="work-caption"><h3>${escape(label)}</h3><span>${escape(work.description || work.channel || '')}</span></div>
+        <div class="work-caption"><h3>${escape(video ? work.role : label)}</h3><span>${escape(work.description || work.channel || '')}</span></div>
       </${tag}>`;
     }).join('');
     main.innerHTML = `<section class="hero shell">
@@ -113,11 +113,11 @@ async function start() {
       ${cv ? `<a class="button" href="${escape(cv)}" data-pdf data-title="CV — ${escape(person.name)}">Read my CV ↗</a>` : ''}</div></div>
       ${person.experience.length ? `<section class="experience-list"><h2 class="section-title">Experience</h2>${person.experience.map(item => `<article class="experience"><span>${escape(item.period)}</span><div><h3>${escape(item.title)}</h3><p>${escape(item.description)}</p></div></article>`).join('')}</section>` : ''}</section>`;
   } else if (page === 'contact') {
-    main.innerHTML = `<section class="contact-page shell"><h1 class="page-title">Get in Touch</h1><div class="contact-layout"><div>${contactDetails}<p class="location">Based in Tokyo.<br>Open to stories everywhere.</p></div><div class="contact-invitation"><h2>Every great story starts with a conversation.</h2><p>Have a narrative, a script, or a creative project in mind? I'd love to hear from you.</p><a class="button" href="mailto:${escape(person.email)}">Let's talk ↗</a></div></div></section>`;
+    main.innerHTML = `<section class="contact-page shell"><h1 class="page-title">Get in Touch</h1><div class="contact-layout"><div>${contactDetails}<p class="location">Based in Tokyo.<br>Open to stories everywhere.</p></div><div class="contact-invitation"><h2>Have a project in mind?</h2><p>For writing, narrative consulting, or content production, get in touch.</p><a class="button" href="mailto:${escape(person.email)}">Let's talk ↗</a></div></div></section>`;
   } else if (page === 'writing' || page === 'poetry') {
     const poetry = page === 'poetry';
     const items = (poetry ? content.poetry : content.writing).filter(item => safeUrl(item.pdf));
-    main.innerHTML = `<section class="library shell">${poetry ? pageHero('Poetry', 'Few words. Deep feelings.', 'Poems to pause with, feel, and return to.') : pageHero('Writing & scripts', 'Between the pages.', 'Writing and scripts. Open a title and turn the pages at your own pace.')}
+    main.innerHTML = `<section class="library shell">${poetry ? pageHero('Poetry', 'Poetry.', 'A collection of poems.') : pageHero('Writing & scripts', 'Writing & scripts.', 'Writing and scripts. Open a title and turn the pages at your own pace.')}
       ${!poetry && items.length ? '<div class="filters" role="group" aria-label="Filter by category"><button class="filter" data-filter="All" aria-pressed="true">All</button><button class="filter" data-filter="Essay" aria-pressed="false">Essays</button><button class="filter" data-filter="Script" aria-pressed="false">Scripts</button></div>' : ''}
       <div id="works">${items.length ? `<div class="grid">${items.map(pdfCard).join('')}</div>` : empty('New stories are on their way.', 'New work will appear here as it is added.')}</div></section>`;
     document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
@@ -127,7 +127,7 @@ async function start() {
     }));
   } else if (page === 'video') {
     const videos = content.videos.filter(item => youtubeId(item.url));
-    main.innerHTML = `<section class="library shell">${pageHero('On screen', 'On the other side of the screen.', 'Productions and YouTube projects I have contributed to.')}${videos.length ? `<div class="grid">${videos.map(videoCard).join('')}</div>` : empty('The curtain opens soon.', 'New projects will appear here.')}</section>`;
+    main.innerHTML = `<section class="library shell">${pageHero('On screen', 'Video work.', 'Content Creator &amp; Assistant Producer for Red Bull Gamerszon. This role applies to every video below.')}${safeUrl(content.videoChannel?.url) ? `<p><a href="${escape(safeUrl(content.videoChannel.url))}" target="_blank" rel="noopener">Visit ${escape(content.videoChannel.title)} on YouTube ↗</a></p><br>` : ''}${videos.length ? `<div class="grid">${videos.map(videoCard).join('')}</div>` : empty('The curtain opens soon.', 'New projects will appear here.')}</section>`;
   }
   // Content is rendered asynchronously, so restore direct links to the work section.
   if (location.hash === '#featured') document.querySelector('#featured')?.scrollIntoView();
@@ -144,7 +144,7 @@ document.addEventListener('click', async event => {
     } catch { location.href = link.href; }
   } else {
     const dialog = document.querySelector('#video-dialog');
-    document.querySelector('#video-title').textContent = link.dataset.title;
+    document.querySelector('#video-title').textContent = [link.dataset.title, link.dataset.role].filter(Boolean).join(' — ');
     const iframe = document.createElement('iframe');
     iframe.src = `https://www.youtube-nocookie.com/embed/${link.dataset.video}`;
     iframe.title = link.dataset.title;
