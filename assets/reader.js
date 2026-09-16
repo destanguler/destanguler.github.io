@@ -3,7 +3,7 @@ const FLIP_MODULE = './vendor/page-flip.js';
 document.body.insertAdjacentHTML('beforeend', `
   <dialog class="reader" aria-labelledby="reader-title">
     <div class="dialog-bar"><h2 id="reader-title"></h2><button class="icon-button" id="reader-close" aria-label="Close reader" autofocus>✕</button></div>
-    <div class="reader-tools"><label for="reader-zoom">View</label><select id="reader-zoom"><option value="fit">Fit page</option><option value="1">100%</option><option value="1.5">150%</option><option value="2">200%</option></select><a id="original-pdf" target="_blank" rel="noopener">Open PDF ↗</a><a id="download-pdf" download>Download ↓</a></div>
+    <div class="reader-tools"><label for="reader-zoom">View</label><select id="reader-zoom"><option value="auto">Auto</option><option value="fit">Fit page</option><option value="1">100%</option><option value="1.5">150%</option><option value="2">200%</option></select><a id="original-pdf" target="_blank" rel="noopener">Open PDF ↗</a><a id="download-pdf" download>Download ↓</a></div>
     <p class="reader-message" role="status"></p>
     <div class="reader-stage"><div class="book-mount"></div><details class="page-text" hidden><summary>Read this page as text</summary><p></p></details></div>
     <div class="reader-bottom"><button class="button secondary" id="previous">← Previous</button><span id="page-count" aria-live="polite"></span><button class="button secondary" id="next">Next →</button></div>
@@ -71,7 +71,7 @@ async function prepare(s) {
     const text = s.cache.get(s.page)?.text || '';
     textView.querySelector('p').textContent = text;
     textView.hidden = !text.trim();
-    message.textContent = reducedMotion.matches ? '' : 'Drag a page corner, or use the arrows.';
+    message.textContent = zoom.value !== 'fit' ? 'Scroll to read. Use the arrows to turn pages.' : reducedMotion.matches ? '' : 'Drag a page corner, or use the arrows.';
   } catch {
     if (state === s) message.textContent = 'This page could not be displayed. Please use Open PDF above.';
   } finally {
@@ -93,7 +93,9 @@ async function build(s) {
   controls();
   clearBook(s);
   const padding = innerWidth <= 600 ? 32 : 64;
-  const scale = zoom.value === 'fit'
+  const scale = zoom.value === 'auto'
+    ? Math.max(.1, Math.min(1.5, (stage.clientWidth - padding) / s.base.width))
+    : zoom.value === 'fit'
     ? Math.max(.1, Math.min((stage.clientWidth - padding) / s.base.width, (stage.clientHeight - padding) / s.base.height))
     : Number(zoom.value);
   s.width = Math.floor(s.base.width * scale);
@@ -124,6 +126,7 @@ async function build(s) {
     s.page = event.data;
     dialog.querySelector('#page-count').textContent = `Page ${s.page + 1} of ${s.pdf.numPages}`;
     textView.open = false;
+    stage.scrollTo(0, 0);
     prepare(s);
   });
   s.flip.on('changeState', event => {
@@ -143,7 +146,7 @@ export async function openPdf(url, title) {
   if (dialog.open) return;
   const s = { page: 0, busy: true, cache: new Map() };
   state = s;
-  zoom.value = 'fit';
+  zoom.value = 'auto';
   textView.hidden = true;
   dialog.querySelector('#reader-title').textContent = title;
   dialog.querySelector('#original-pdf').href = url;

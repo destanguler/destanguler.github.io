@@ -139,7 +139,7 @@ document.addEventListener('click', async event => {
   event.preventDefault();
   if (link.hasAttribute('data-pdf')) {
     try {
-      const reader = await import('./reader.js?v=paper-2');
+      const reader = await import('./reader.js?v=responsive-3');
       reader.openPdf(link.href, link.dataset.title);
     } catch { location.href = link.href; }
   } else {
